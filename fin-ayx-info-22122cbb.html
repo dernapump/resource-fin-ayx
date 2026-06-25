@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>ayx · 简明访问指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f2f2;
+            color: #1e1e1e;
+            line-height: 1.6;
+            padding: 0 20px 40px;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid #d9d9d9;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .navbar .logo {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #333;
+        }
+        .navbar .logo a {
+            color: #2c5f8a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .navbar .logo a:hover {
+            border-bottom-color: #2c5f8a;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #1f1f1f;
+        }
+
+        /* hero 区 — 简明指引 */
+        .hero {
+            text-align: center;
+            padding: 32px 0 48px;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #222;
+            margin-bottom: 14px;
+            letter-spacing: 0.01em;
+        }
+        .hero p {
+            max-width: 660px;
+            margin: 0 auto 24px;
+            color: #4d4d4d;
+            font-size: 1.05rem;
+        }
+        .hero .tag {
+            display: inline-block;
+            background: #e8e8e8;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #3e3e3e;
+            border: 1px solid #cfcfcf;
+        }
+
+        /* 卡片通用样式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 14px;
+            padding: 28px 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            transition: box-shadow 0.25s, transform 0.15s;
+        }
+        .card:hover {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #2a2a2a;
+        }
+        .card p {
+            color: #515151;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+        .card .meta {
+            color: #7a7a7a;
+            font-size: 0.85rem;
+            border-top: 1px solid #ececec;
+            padding-top: 14px;
+            margin-top: 14px;
+        }
+
+        /* 三个场景模块（差异化） */
+        .scenario-section {
+            margin: 48px 0 24px;
+        }
+        .scenario-section h2 {
+            font-weight: 380;
+            font-size: 1.7rem;
+            color: #2b2b2b;
+            border-left: 4px solid #b0b0b0;
+            padding-left: 18px;
+            margin-bottom: 28px;
+        }
+        .scenario-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .scenario-item {
+            flex: 1 1 220px;
+            background: #ffffff;
+            border: 1px solid #e3e3e3;
+            border-radius: 14px;
+            padding: 24px 22px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .scenario-item h4 {
+            font-weight: 480;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #2c2c2c;
+        }
+        .scenario-item p {
+            color: #5a5a5a;
+            font-size: 0.92rem;
+        }
+
+        /* 常见说明 / faq 摘要 */
+        .faq-summary {
+            margin: 50px 0 32px;
+            background: #fafafa;
+            border: 1px solid #dddddd;
+            border-radius: 16px;
+            padding: 32px 30px;
+        }
+        .faq-summary h2 {
+            font-weight: 380;
+            font-size: 1.5rem;
+            margin-bottom: 22px;
+            color: #202020;
+        }
+        .faq-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item strong {
+            font-weight: 500;
+            color: #222;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .faq-item span {
+            color: #5b5b5b;
+            font-size: 0.95rem;
+        }
+
+        /* 链接内敛句子 */
+        .inline-link {
+            color: #2c5f8a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b8cbd9;
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+        .inline-link:hover {
+            color: #16436b;
+            text-decoration-color: #16436b;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #d5d5d5;
+            font-size: 0.85rem;
+            color: #6b6b6b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer a {
+            color: #4e4e4e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-color: #c0c0c0;
+        }
+        .footer a:hover {
+            color: #1f1f1f;
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .scenario-grid {
+                flex-direction: column;
+            }
+            .faq-summary {
+                padding: 22px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="https://fin-ayx.com.cn">ayx</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">简明指南</a></li>
+            <li><a href="#">场景</a></li>
+            <li><a href="#">说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero：访问提醒 + 简明入口 -->
+    <div class="hero">
+        <h1>访问 <a href="https://fin-ayx.com.cn" class="inline-link">ayx</a> · 轻量指引</h1>
+        <p>这只是一个安静的介绍页，帮你快速了解网站的基本面貌与常见路径。内容保持简洁，无过度修饰。</p>
+        <span class="tag">🧭 非官方 · 仅作导航参考</span>
+    </div>
+
+    <!-- 核心介绍 / 特点卡片（分区卡片） -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>访问前注意</h3>
+            <p>建议使用主流浏览器，保持网络通畅。部分功能可能需要允许弹出窗口或启用 JavaScript。</p>
+            <div class="meta">首次访问请耐心等待加载</div>
+        </div>
+        <div class="card">
+            <h3>界面概述</h3>
+            <p>布局直观，主要入口集中在顶部与侧边。信息层级清楚，适合快速查找所需板块。</p>
+            <div class="meta">响应式设计，移动端也可浏览</div>
+        </div>
+        <div class="card">
+            <h3>内容侧重</h3>
+            <p>围绕信息展示与简洁交互，没有过度动效。页面内容以实用为导向，减少干扰。</p>
+            <div class="meta">保持轻量的浏览体验</div>
+        </div>
+    </div>
+
+    <!-- 三个场景模块（差异化内容） -->
+    <div class="scenario-section">
+        <h2>常见使用场景</h2>
+        <div class="scenario-grid">
+            <div class="scenario-item">
+                <h4>📋 快速查阅</h4>
+                <p>当你需要了解某个信息点或进行简单浏览时，直接打开 <a href="https://fin-ayx.com.cn" class="inline-link">ayx</a> 即可看到清晰分类。</p>
+            </div>
+            <div class="scenario-item">
+                <h4>🔄 日常参考</h4>
+                <p>对于有定期浏览习惯的用户，网站的内容更新节奏平缓，适合作为日常信息源之一。</p>
+            </div>
+            <div class="scenario-item">
+                <h4>📎 辅助访问</h4>
+                <p>如果因为网络或设备原因遇到显示异常，可尝试刷新或切换网络环境，多数情况下可正常加载。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-summary">
+        <h2>一些常见说明</h2>
+        <div class="faq-item">
+            <strong>是否需要注册或登录？</strong>
+            <span>部分内容可直接浏览，具体依页面提示为准，不需要额外操作。</span>
+        </div>
+        <div class="faq-item">
+            <strong>页面加载较慢怎么办？</strong>
+            <span>建议检查本地网络，或稍后重试。网站本身响应正常，偶发延迟多与本地环境有关。</span>
+        </div>
+        <div class="faq-item">
+            <strong>链接或按钮没有反应？</strong>
+            <span>确认浏览器版本并允许必要脚本。如果问题持续，可尝试更换浏览器或设备。</span>
+        </div>
+        <div class="faq-item">
+            <strong>这个介绍页是官方吗？</strong>
+            <span>不是。这是一个独立的访问提示页，仅提供客观信息，与 <a href="https://fin-ayx.com.cn" class="inline-link">ayx</a> 无直接关联。</span>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="footer">
+        <span>内容仅供参考 · 保持距离</span>
+        <span>了解更多可直接访问 <a href="https://fin-ayx.com.cn" class="inline-link">ayx</a></span>
+    </footer>
+
+</div>
+</body>
+</html>
